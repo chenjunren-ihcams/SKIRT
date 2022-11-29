@@ -5,7 +5,7 @@ library(sqldf)
 
 ## Data preparation 
 
-setwd("C:/Users/hp/Desktop/?????Ø½?-Áª??Í¶Ó°/upload files/")
+setwd("filepath")
 
 immune.profiles.tsne <- read_excel("./data/immune.profiles.tsne.xlsx", guess_max = 11150)
 patients <- unique(immune.profiles.tsne$ID)
