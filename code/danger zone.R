@@ -8,7 +8,7 @@ library(sqldf)
 
 ## Data preparation 
 
-setwd("C:/Users/hp/Desktop/免疫重建-联合投影/upload files/")
+setwd("filepath")
 
 SKIRT <- read_excel("./data/SKIRT.xlsx", guess_max = 1945)
 type <- array('CV', nrow(SKIRT))
@@ -22,8 +22,8 @@ immune.profiles.tsne <- read_excel("./data/immune.profiles.tsne.xlsx", guess_max
 ## Define functions
 
 outline.func <- function(x, y, prob = 0.55, char = T){
-  # input：coordinate of original points
-  # output：coordinate of profile line
+  # input锛歝oordinate of original points
+  # output锛歝oordinate of profile line
   if (!requireNamespace("MASS", quietly = T)) {
     install.packages("MASS")
   }
@@ -192,8 +192,8 @@ for(v in 1 : length(validation)){
         for (i in 1:grid_x) {
           for(j in 1:grid_y) {
             
-            group <- as.numeric(dist_sq[i,j,] <= (radius/1)^2)  ###debug：
-            SKIRT.i.j <- data.frame(SKIRT[J & randomization!=kk & type=='CV',], group=group[J & randomization!=kk & type=='CV']) ###debug：
+            group <- as.numeric(dist_sq[i,j,] <= (radius/1)^2)  
+            SKIRT.i.j <- data.frame(SKIRT[J & randomization!=kk & type=='CV',], group=group[J & randomization!=kk & type=='CV']) 
             
             
             if(sum(SKIRT.i.j$group==1) >= case){
@@ -209,7 +209,7 @@ for(v in 1 : length(validation)){
                 beta_p[grid_y-j+1,i] <- sign(beta[grid_y-j+1,i])
               }
               if(p[grid_y-j+1,i] == 0){
-                beta_p[grid_y-j+1,i] <- NA   #将0改为NA就可以去掉
+                beta_p[grid_y-j+1,i] <- NA   
               }
               
               beta_p_collect[[kk]] <- beta_p
